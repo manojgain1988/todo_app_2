@@ -11,7 +11,17 @@
           <div class="card rounded-3">
             <div class="card-body p-4">
   
-              <h4 class="text-center my-3 pb-3">To Do App</h4>
+              <h2 class="text-center fw-bold ">Todo App</h2>
+              <p>
+                {% if messages %}
+              {% for message in messages %}
+              <div class="col-md-12 text-center">
+                <h2 style="color: red; text-align:center">{{message}} </h2>
+              </div>
+              {% endfor %}
+             
+            {% endif %}
+              </p>
   
               <form method="#" class="row row-cols-lg-auto g-3 justify-content-center align-items-center mb-4 pb-2">
                 <div class="col-12">
@@ -24,7 +34,7 @@
                   <button type="submit" class="btn btn-primary">Add Task</button>
                 </div>
               </form>
-              <a href=""><button style="background: rgb(218, 203, 4); color: rgb(0, 0, 0);" type="submit" class="btn btn-primary">Logout</button></a>
+              <a href="{% url 'logout' %}"><button style="background: rgb(218, 203, 4); color: rgb(0, 0, 0);" type="submit" class="btn btn-primary">Logout</button></a>
   
               <table class="table mb-4">
                 <thead>

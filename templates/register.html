@@ -3,14 +3,14 @@
   <div class="wrapper ">
     <h1 style="text-align:center">Register Form</h1>
 
-  <h3>
+  <p>
       {% if messages %}
     {% for message in messages %}
-    <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+    <h2 style="color: red" >{{message}} </h2>
     {% endfor %}
    
   {% endif %}
-    </h3>
+    </p>
 
     
     <form action="{% url 'register' %}" method="POST">

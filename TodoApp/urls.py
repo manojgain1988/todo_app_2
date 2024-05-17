@@ -4,9 +4,7 @@ from TodoApp  import views
 
 urlpatterns = [ 
     path('', views.home, name='home'),
-    path('about/', views.about, name='about'),
-    path('contact/', views.contact, name='contact'),
-    path('login/', views.login, name='login'),
+    path('login/', views.login_page, name='login'),
     path('register/', views.register, name='register'),
-    path('logout/', views.logout, name='logout'),
+    path('logout/', views.logout_page, name='logout'),
 ] 
