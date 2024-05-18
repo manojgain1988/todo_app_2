@@ -33,13 +33,19 @@ from django.db.models import Q
 
 
 def home(request):
+    current_user = request.user
+    all_task= todo.objects.filter(user=current_user)
     if request.method == "POST":
         name = request.POST.get('todo_name')
         New_todo = todo(user=request.user,todo_description=name)
         New_todo.save()
         messages.success(request, "New Task Created !!")
         return redirect ('home')
-    return render(request, 'home.html')
+    
+    context={
+        'all_task':all_task
+    }
+    return render(request, 'home.html',context)
 
 
 
