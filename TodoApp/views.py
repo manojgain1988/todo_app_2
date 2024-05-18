@@ -20,6 +20,7 @@ from django.contrib.auth.forms import AuthenticationForm
 
 # # models
 from django.contrib.auth.models import User
+from TodoApp.models import todo
 
 
 # # message
@@ -32,8 +33,13 @@ from django.db.models import Q
 
 
 def home(request):
-
-    return render(request, 'todo.html')
+    if request.method == "POST":
+        name = request.POST.get('todo_name')
+        New_todo = todo(user=request.user,todo_description=name)
+        New_todo.save()
+        messages.success(request, "New Task Created !!")
+        return redirect ('home')
+    return render(request, 'home.html')
 
 
 
