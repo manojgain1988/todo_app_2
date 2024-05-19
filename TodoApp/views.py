@@ -31,7 +31,7 @@ from django.db.models import Q
 
 # Create your views here.
 
-
+@login_required
 def home(request):
     current_user = request.user
     all_task= todo.objects.filter(user=current_user)
@@ -48,7 +48,7 @@ def home(request):
     return render(request, 'home.html',context)
 
 
-
+@login_required
 def update_task(request,id):
     current_user = request.user
     task = todo.objects.get(user=current_user, id=id)
@@ -58,7 +58,7 @@ def update_task(request,id):
     return redirect('home')
 
 
-
+@login_required
 def delete_task(request,id):
     task = todo.objects.get(user=request.user, id=id)
     task.delete()
@@ -93,7 +93,7 @@ def login_page(request):
 
 
 
-
+@login_required
 def logout_page(request):
     logout(request)
     messages.error(request, "Logout Successfull , Please Login Here !")

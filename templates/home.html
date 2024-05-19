@@ -14,17 +14,16 @@
               <h2 class="text-center fw-bold ">Todo App</h2>
               <p>
                 {% if messages %}
-              {% for message in messages %}
-              <div class="col-md-12 text-center">
-                <h3 class="text-danger text-center fw-bolder">{{message}} </h3>
-              
-              {% endfor %}
-             
-            {% endif %}
+                    {% for message in messages %}
+                        <div class="col-md-12 text-center">
+                        <h3 class="text-danger text-center fw-bolder">{{message}}</h3>
+                    {% endfor %}
+                {% endif %}
               </p>
   
               <form method="POST" action="{% url 'home' %}" class="row row-cols-lg-auto g-3 justify-content-center align-items-center mb-4 pb-2">
                 {% csrf_token %}
+                
                 <div class="col-12">
                   <div class="form-outline">
                     <input type="text" id="form1" name="todo_name" class="form-control" required placeholder="Enter Your Task"/>
@@ -35,8 +34,13 @@
                   <button type="submit"  class="btn btn-primary">Add Task</button>
                 </div>
               </form>
-              <a href="{% url 'logout' %}"><button style="background: rgb(218, 203, 4); color: rgb(0, 0, 0);" type="submit" class="btn btn-primary">Logout</button></a>
+              <div class="d-flex">
+                <a href="{% url 'logout' %}"><button style="background: rgb(218, 203, 4); color: rgb(0, 0, 0);" type="submit" class="btn btn-primary">Logout</button></a>
+                  
+                <h4 class="text-danger fw-bolder  ms-auto">User: {{user.username}}</h4>
   
+              </div>
+             
               <table class="table mb-4">
                 <thead>
                   <tr>
@@ -57,10 +61,8 @@
                     <td>Completed</td>
                     {% endif %}
                     <td>
-                      <a href="{% url 'delete' task.id %}">
-                      <button type="submit" class="btn btn-danger">Delete</button></a>
-                      <a href="{% url 'update' task.id %}">
-                      <button type="submit" class="btn btn-success ms-1">Finished</button></a>
+                      <a href="{% url 'delete' task.id %}"><button type="submit" class="btn btn-danger">Delete</button></a>
+                      <a href="{% url 'update' task.id %}"><button type="submit" class="btn btn-success ms-1">Finished</button></a>
                     </td>
                   </tr>
                   
