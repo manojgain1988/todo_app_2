@@ -7,7 +7,7 @@ from django.contrib.auth.models import User
 class todo(models.Model):
     user = models.ForeignKey( User, related_name='user_todo', on_delete=models.CASCADE)
     todo_description = models.CharField(max_length= 500)
-    status = models.BooleanField(default= True)
+    status = models.BooleanField(default= False)
     created_date = models.DateTimeField(auto_now_add=True)
     updated_date = models.DateTimeField(auto_now_add=True)
 

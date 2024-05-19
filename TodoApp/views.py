@@ -49,6 +49,24 @@ def home(request):
 
 
 
+def update_task(request,id):
+    current_user = request.user
+    task = todo.objects.get(user=current_user, id=id)
+    task.status=True
+    task.save()
+    messages.success(request, "Task Updated !!") 
+    return redirect('home')
+
+
+
+def delete_task(request,id):
+    task = todo.objects.get(user=request.user, id=id)
+    task.delete()
+    messages.success(request, "Task Deleted !!") 
+    return redirect('home')
+
+
+
 
 
 def login_page(request):
